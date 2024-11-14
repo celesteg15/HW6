@@ -1,7 +1,7 @@
 
 /******************************************************************
  *
- *   YOUR NAME / SECTION NUMBER
+ *   Celeste Gonzalez / COMP 272 002
  *
  *   Note, additional comments provided throughout this source code
  *   is for educational purposes

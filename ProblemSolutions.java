@@ -1,7 +1,7 @@
 
 /******************************************************************
  *
- *   YOUR NAME / SECTION NUMBER
+ *   Celeste Gonzalez / COMP 272 002
  *
  *   This java file contains the problem solutions for the methods lastBoulder,
  *   showDuplicates, and pair methods. You should utilize the Java Collection
@@ -94,7 +94,16 @@ public class ProblemSolutions {
         //
         //  YOUR CODE GOES HERE
         //
-        return new ArrayList<>();  // Make sure result is sorted in ascending order
+        HashSet<String> seen = new HashSet<>();
+        TreeSet<String> duplicate = new TreeSet<>();
+
+        for(String item : Input) {
+            if (!seen.add(item)) {
+                duplicate.add(item);
+            }
+        }
+        
+        return new ArrayList<>(duplicate);  // Make sure result is sorted in ascending order
 
     }
 
