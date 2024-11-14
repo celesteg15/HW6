@@ -152,10 +152,12 @@ class PriorityQueue<E, P> {
     public Node add(E e, P priority) {
 
         // YOUR CODE GOES HERE
-        Node newNode = new Node(e, priority, tree.size()); // Use 'e' instead of 'value'
-        tree.add(newNode);
+        // new Node with the element 'e' and priority w/ an equal index to current size of heap
+        Node newNode = new Node(e, priority, tree.size()); 
+        tree.add(newNode);//add new node to end of tree, to keep tree structure 
         pullUp(tree.size() - 1);  // Adjust position to maintain min-heap property
-        return newNode;
+        //keeping smallest priority element @ the root
+        return newNode; //this reutrns allows new node to be accessed or modifies directly
     }
 
 
@@ -172,12 +174,12 @@ class PriorityQueue<E, P> {
     public boolean contains(E e) {
 
         // ADD YOUR CODE HERE
-        for(Node node : tree) {
-            if (node.value.equals(value)) {
-                return true; 
+        for(Node node : tree) { //iterating over each node wiht the tree(min-heap) structure 
+            if (node.value.equals(e)) { //if current node values match input value 'e', return true if found
+                return true; //
             }
         }
-        return false;
+        return false; //otherwise if no match
     }
 
 

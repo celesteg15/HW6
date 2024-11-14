@@ -82,7 +82,6 @@ public class ProblemSolutions {
       }
 
       return maxHeap.isEmpty() ? 0 : maxHeap.peek();
-      return -1;
   }
 
 
@@ -108,10 +107,12 @@ public class ProblemSolutions {
         //
         //  YOUR CODE GOES HERE
         //
-        HashSet<String> seen = new HashSet<>();
+        HashSet<String> seen = new HashSet<>(); //HashSet stores the unique string as we take in the input list 
+        // treeset will store duplicates, sorting elements in ascending order
         TreeSet<String> duplicate = new TreeSet<>();
-
+        // 
         for(String item : input) {
+            // item already in 'seen', it's a duplicate, so then added to 'duplicate'
             if (!seen.add(item)) {
                 duplicate.add(item);
             }
@@ -158,17 +159,20 @@ public class ProblemSolutions {
         //  YOUR CODE GOES HERE
         //
         HashSet<Integer> seen = new HashSet<>();
-        TreeSet<String> pairing = new TreeSet<>();
+        // HashSet to track integers we've already seen in the input array
+        TreeSet<String> paired = new TreeSet<>(); 
+        // TreeSet to store each unique pair as a formatted string, automatically sorted in ascending order
 
         for(int num : input) {
             int targetPair = k - num;
+                        // Check if the complement is already in 'seen', meaning we found a valid pair
             if (seen.contains(targetPair)) {
                 int min = Math.min(num, targetPair);
                 int max = Math.max(num, targetPair);
-                pairs.add("(" + min + ", " + max + ")");
+                paired.add("(" + min + ", " + max + ")"); //formats pair as a string
             }
-            seen.add(num);
+            seen.add(num); //
         }
-        return new ArrayList<>();  // Make sure returned lists is sorted as indicated above
+        return new ArrayList<>(paired);  // Make sure returned lists is sorted as indicated above
     }
 }
