@@ -68,6 +68,20 @@ public class ProblemSolutions {
       //
       // ADD YOUR CODE HERE - DO NOT FORGET TO ADD YOUR NAME / SECTION # ABOVE
       //
+      PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+      for (int boulder : boulders) {
+          maxHeap.offer(boulder);
+      }
+
+      while (maxHeap.size() > 1) {
+          int y = maxHeap.poll(); // heaviest
+          int x = maxHeap.poll(); // second heaviest
+          if (x != y) {
+              maxHeap.offer(y - x);
+          }
+      }
+
+      return maxHeap.isEmpty() ? 0 : maxHeap.peek();
       return -1;
   }
 
@@ -97,7 +111,7 @@ public class ProblemSolutions {
         HashSet<String> seen = new HashSet<>();
         TreeSet<String> duplicate = new TreeSet<>();
 
-        for(String item : Input) {
+        for(String item : input) {
             if (!seen.add(item)) {
                 duplicate.add(item);
             }

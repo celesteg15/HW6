@@ -152,10 +152,10 @@ class PriorityQueue<E, P> {
     public Node add(E e, P priority) {
 
         // YOUR CODE GOES HERE
-        Node nodeNew = new Node(value, priority);
-        tree.add(nodeNew);
-        pullUp(tree.size() - 1);
-        return null;
+        Node newNode = new Node(e, priority, tree.size()); // Use 'e' instead of 'value'
+        tree.add(newNode);
+        pullUp(tree.size() - 1);  // Adjust position to maintain min-heap property
+        return newNode;
     }
 
 
@@ -173,7 +173,7 @@ class PriorityQueue<E, P> {
 
         // ADD YOUR CODE HERE
         for(Node node : tree) {
-            if (node.value.equals(e)) {
+            if (node.value.equals(value)) {
                 return true; 
             }
         }
