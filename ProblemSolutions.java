@@ -143,6 +143,18 @@ public class ProblemSolutions {
         //
         //  YOUR CODE GOES HERE
         //
+        HashSet<Integer> seen = new HashSet<>();
+        TreeSet<String> pairing = new TreeSet<>();
+
+        for(int num : input) {
+            int targetPair = k - num;
+            if (seen.contains(targetPair)) {
+                int min = Math.min(num, targetPair);
+                int max = Math.max(num, targetPair);
+                pairs.add("(" + min + ", " + max + ")");
+            }
+            seen.add(num);
+        }
         return new ArrayList<>();  // Make sure returned lists is sorted as indicated above
     }
 }
